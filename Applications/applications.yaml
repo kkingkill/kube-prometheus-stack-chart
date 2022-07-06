@@ -5,9 +5,9 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: foundation
+    namespace: monitoring
     server: https://kubernetes.default.svc
-  project: foundation
+  project: default
   source:
     path: prometheus/kube-prometheus-stack
     repoURL: https://github.com/kkingkill/kube-prometheus-stack-chart.git
@@ -18,6 +18,7 @@ spec:
     automated:
       selfHeal: true
       prune: true
+    #test
 
 
 
