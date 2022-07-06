@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ./kube-prometheus-stack
+    path: ./kuber-prometheus-stack
     repoURL: https://github.com/kkingkill/kube-prometheus-stack-chart.git
     targetRevision: HEAD
   syncPolicy:
