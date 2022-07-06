@@ -2320,8 +2320,8 @@ prometheus:
     serviceMonitorSelector: {}
     ## Example which selects ServiceMonitors with label "prometheus" set to "somelabel"
     # serviceMonitorSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
+       matchLabels:
+         app.kubernetes.io/instance: prometheus-engineer
 
     ## Namespaces to be selected for ServiceMonitor discovery.
     ##

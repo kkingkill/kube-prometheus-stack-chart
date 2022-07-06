@@ -617,7 +617,6 @@ spec:
                       is "In", and the values array contains only "value". The requirements
                       are ANDed.
                     type: object
-                    app.kubernetes.io/instance: prometheus-engineer
                 type: object
               targetLabels:
                 description: TargetLabels transfers labels from the Kubernetes `Service`
