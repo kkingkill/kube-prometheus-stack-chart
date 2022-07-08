@@ -25,28 +25,28 @@ spec:
       prune: true
     #test
 
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: kube-prometheus-stack-crds
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
-spec:
-  destination:
-    name: in-cluster
-    namespace: monitoring
-  project: default
-  source:
-    repoURL: https://github.com/prometheus-community/helm-charts.git
-    path: charts/kube-prometheus-stack/crds/
-    targetRevision: kube-prometheus-stack-36.2.1
-    directory:
-      recurse: true
-  syncPolicy:
-    syncOptions:
-      - Replace=true
-    automated:
-      prune: true
-      selfHeal: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: kube-prometheus-stack-crds
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "2"
+# spec:
+#   destination:
+#     name: in-cluster
+#     namespace: monitoring
+#   project: default
+#   source:
+#     repoURL: https://github.com/prometheus-community/helm-charts.git
+#     path: charts/kube-prometheus-stack/crds/
+#     targetRevision: kube-prometheus-stack-36.2.1
+#     directory:
+#       recurse: true
+#   syncPolicy:
+#     syncOptions:
+#       - Replace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
 
 
