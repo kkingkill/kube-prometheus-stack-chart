@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: prometheus
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+
 spec:
   destination:
     namespace: monitoring
@@ -12,6 +15,8 @@ spec:
     path: ./kube-prometheus-stack
     repoURL: https://github.com/kkingkill/kube-prometheus-stack-chart.git
     targetRevision: HEAD
+    helm:
+      skipCrds: true
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
@@ -20,5 +25,28 @@ spec:
       prune: true
     #test
 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack-crds
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  destination:
+    name: in-cluster
+    namespace: monitoring
+  project: default
+  source:
+    repoURL: https://github.com/prometheus-community/helm-charts.git
+    path: charts/kube-prometheus-stack/crds/
+    targetRevision: kube-prometheus-stack-36.2.1
+    directory:
+      recurse: true
+  syncPolicy:
+    syncOptions:
+      - Replace=true
+    automated:
+      prune: true
+      selfHeal: true
 
 
